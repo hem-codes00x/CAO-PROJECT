@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary Battle: The Overflow Challenge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" onclick="showHome()">⬡ BINARY BATTLE</a>
+    <span class="tag">CAO • 4-BIT ARENA</span>
+  </header>
+
+  <main>
+    <section id="home-screen" class="screen active">
+      <div class="hero">
+        <div class="chip-mascot">▦</div>
+        <p class="eyebrow">SYSTEM ONLINE // PLAYER 01</p>
+        <h1>BINARY <span>BATTLE</span></h1>
+        <h2>The Overflow Challenge</h2>
+        <p class="description">
+          Master binary addition, carry-out and signed overflow.
+          Can you defeat the final boss?
+        </p>
+        <button class="primary-btn" onclick="startGame()">START GAME ▶</button>
+        <button class="secondary-btn" onclick="showTutorial()">HOW TO PLAY ?</button>
+
+        <div class="level-preview">
+          <div class="preview-card"><b>01 Binary Basics</b><small>4-bit addition</small></div>
+          <div class="preview-card"><b>02 Carry Protocol</b><small>Unsigned addition</small></div>
+          <div class="preview-card"><b>03 Signed Combat</b><small>Two's complement</small></div>
+          <div class="preview-card"><b>04 Overflow Zone</b><small>Overflow detection</small></div>
+          <div class="preview-card"><b>★ Final Boss</b><small>Mixed challenges</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tutorial-screen" class="screen">
+      <div class="panel">
+        <p class="eyebrow">TRAINING SIMULATION</p>
+        <h2>Know Your Bits</h2>
+        <h3>Unsigned numbers</h3>
+        <p>4-bit unsigned values range from 0 to 15.</p>
+        <p><code>0101 = 5</code></p>
+        <h3>Signed two's complement</h3>
+        <p>4-bit signed values range from −8 to +7.</p>
+        <p><code>1111 = −1</code></p>
+        <h3>Carry versus overflow</h3>
+        <p>Carry-out is an extra bit in unsigned addition. Signed overflow happens when two same-sign operands produce a result with the opposite sign.</p>
+        <p><code>0111 + 0001 = 1000</code></p>
+        <button class="primary-btn" onclick="startGame()">I'M READY ▶</button>
+        <button class="secondary-btn" onclick="showHome()">BACK</button>
+      </div>
+    </section>
+
+    <section id="game-screen" class="screen">
+      <div class="stats">
+        <div class="stat"><small>SCORE</small><b id="score">0</b></div>
+        <div class="stat"><small>STREAK</small><b id="streak">0</b></div>
+        <div class="stat"><small>TIME LEFT</small><b id="timer">180</b></div>
+      </div>
+
+      <div class="progress-track"><div id="progress-bar"></div></div>
+
+      <div class="game-heading">
+        <div>
+          <p class="eyebrow" id="level-label">LEVEL 01</p>
+          <h2 id="level-title">Binary Basics</h2>
+        </div>
+        <span id="question-count">1 / 5</span>
+      </div>
+
+      <div class="panel question-panel">
+        <p class="eyebrow" id="question-type">BINARY ADDITION</p>
+        <p id="question-prompt">Calculate the sum</p>
+        <div class="binary-equation">
+          <span id="operand-a">0101</span>
+          <span class="operator">+</span>
+          <span id="operand-b">0011</span>
+          <span class="operator">=</span>
+          <span class="question-mark">????</span>
+        </div>
+
+        <div id="comparison" class="comparison hidden"></div>
+        <p class="answer-label">SELECT YOUR ANSWER</p>
+        <div id="answers" class="answers"></div>
+        <div id="feedback" class="feedback hidden"></div>
+
+        <div class="game-actions">
+          <button class="secondary-btn" id="hint-btn" onclick="useHint()">💡 HINT</button>
+          <button class="secondary-btn" onclick="toggleComparison()">SIGNED / UNSIGNED</button>
+          <button class="primary-btn hidden" id="next-btn" onclick="nextQuestion()">NEXT ▶</button>
+        </div>
+      </div>
+
+      <div class="explain-panel">
+        <h3>PROCESSOR REGISTER — 4 BIT</h3>
+        <div class="registers">
+          <div><small>FULL SUM</small><b id="full-sum">—</b></div>
+          <div><small>STORED RESULT</small><b id="stored-result">—</b></div>
+          <div><small>CARRY-OUT</small><b id="carry-out">—</b></div>
+          <div><small>SIGNED OVERFLOW</small><b id="overflow">—</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results-screen" class="screen">
+      <div class="panel results-panel">
+        <div class="chip-mascot">★</div>
+        <p class="eyebrow">SIMULATION COMPLETE</p>
+        <h1 id="result-title">BATTLE COMPLETE!</h1>
+        <p id="result-message">Your processor survived.</p>
+        <div class="final-score">
+          <small>FINAL SCORE</small>
+          <b id="final-score">0</b>
+        </div>
+        <div class="result-stats">
+          <div><small>ACCURACY</small><b id="accuracy">0%</b></div>
+          <div><small>BEST STREAK</small><b id="best-streak">0</b></div>
+          <div><small>ANSWERED</small><b id="answered">0</b></div>
+        </div>
+        <button class="primary-btn" onclick="startGame()">PLAY AGAIN ↻</button>
+        <button class="secondary-btn" onclick="showHome()">HOME</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>COMPUTER ARCHITECTURE & ORGANIZATION PROJECT</footer>
+  <script src="script.js"></script>
+</body>
+</html>
